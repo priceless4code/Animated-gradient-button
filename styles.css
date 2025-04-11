@@ -1,0 +1,172 @@
+ /* Base Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0F172A;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background: radial-gradient(circle at center, #172554 0%, #0F172A 70%);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /* Border Wrapper */
+        .border-wrapper {
+            position: relative;
+            padding: 3px;
+            border-radius: 16px;
+            background-clip: padding-box;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .border-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            border-radius: 18px;
+            background-size: 400%;
+            animation: gradientMove 8s linear infinite;
+        }
+
+        /* Button Styles */
+        .gradient-btn {
+            position: relative;
+            width: 100%;
+            border: none;
+            background: #111827;
+            color: #fff;
+            padding: 1.4rem 2.5rem;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            z-index: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gradient-btn .icon {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Border Animations */
+        .border-1::before {
+            background: linear-gradient(-45deg, 
+                #FF5757, #FF8C9C, #FFB6C1, #FF5757);
+            background-size: 300%;
+            filter: brightness(1.2) saturate(1.5);
+        }
+
+        .border-2::before {
+            background: linear-gradient(-45deg, 
+                #4ADEDE, #6979F8, #BE7BFF, #4ADEDE);
+            background-size: 300%;
+            filter: brightness(1.2) saturate(1.5);
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hover Effects */
+        .border-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .border-wrapper:hover::before {
+            animation-duration: 3s;
+        }
+
+        .gradient-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.2), transparent 60%);
+            border-radius: 14px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gradient-btn:hover::after {
+            opacity: 1;
+        }
+
+        .gradient-btn:hover .icon {
+            transform: translateX(4px);
+        }
+
+        /* Button Pulse Effect */
+        .border-wrapper.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: #CBD5E1;
+            padding: 1rem;
+            font-size: 0.9rem;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Neon Glow Effect */
+        .border-1 {
+            box-shadow: 0 0 15px rgba(255, 87, 87, 0.5);
+        }
+
+        .border-2 {
+            box-shadow: 0 0 15px rgba(105, 121, 248, 1);
+        }
